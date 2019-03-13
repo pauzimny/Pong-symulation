@@ -1,0 +1,169 @@
+html {
+    /* table */
+    /* --tableWidth: 700px; */
+    --tableWidth: 70vw;
+    --tableHeight: 40vw;
+    /* --tableHeight: 400px; */
+    --tableColor: #333;
+    /* paddle */
+    --paddleWidth: 2.5vw;
+    --paddleHeight: 8vw;
+    --paddleColor: yellow;
+    /* ball*/
+    --ballSize: 2vw;
+    --ballColor: white;
+    /* position */
+    --paddleFromEdge: 5vw;
+    /* animation */
+    --animationTime: 5s;
+}
+
+
+@font-face {
+    font-family: "Joystix";
+    src: url("joystix/joystix\ monospace.ttf");
+}
+
+.table,
+.ball,
+.paddle,
+.result {
+    position: absolute;
+}
+
+.table {
+    width: var(--tableWidth);
+    height: var(--tableHeight);
+    background-color: var(--tableColor);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ball {
+    width: var(--ballSize);
+    height: var(--ballSize);
+    top: calc(50% - var(--ballSize)/2);
+    left: calc(50% - var(--ballSize)/2);
+    background-color: var(--ballColor);
+    border-radius: 50%;
+    animation: ballMove var(--animationTime) linear both;
+}
+
+.paddle {
+    width: var(--paddleWidth);
+    height: var(--paddleHeight);
+    background-color: var(--paddleColor);
+}
+
+/* left paddle */
+
+.player {
+    top: calc(50% - var(--paddleHeight)/2);
+    left: var(--paddleFromEdge);
+    animation: playerPaddle var(--animationTime) linear both;
+}
+
+/* right paddle */
+
+.ai {
+    top: calc(50% - var(--paddleHeight)/2);
+    right: var(--paddleFromEdge);
+    animation: aiPaddle var(--animationTime) linear both;
+}
+
+.result {
+    width: 100%;
+    left: 0;
+    top: 40%;
+
+    font-size: 130px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'joystix', arial, sans-serif;
+    text-shadow: 5px 3px yellow;
+    color: white;
+    transform: scale(0);
+    animation: showResult 1s calc(var(--animationTime) + 1s) both;
+
+
+}
+
+
+
+@keyframes ballMove {
+    20% {
+        top: 50%;
+        left: 85%;
+    }
+
+    40% {
+        top: calc(100% - 2vw);
+        left: 50%;
+    }
+
+    60% {
+        top: 45%;
+        left: 10%;
+    }
+
+    80% {
+        top: 0;
+        left: 50%;
+    }
+
+    100% {
+        top: 20%;
+        left: 110%;
+    }
+}
+
+@keyframes playerPaddle {
+    20% {
+        top: 10%;
+    }
+
+    40% {
+        top: 50%;
+    }
+
+    60% {
+        top: 30%;
+    }
+
+    80% {
+        top: 0;
+    }
+
+    100% {
+        top: 196px;
+    }
+
+}
+
+@keyframes aiPaddle {
+
+    20% {
+        top: 40%;
+    }
+
+    80% {
+        top: 80%;
+    }
+
+    100% {
+        top: 25%;
+    }
+
+}
+
+@keyframes showResult {
+    0% {
+        transform: scale(0),
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}

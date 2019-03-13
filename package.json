@@ -1,0 +1,11 @@
+{
+  "name": "pong-symulation",
+  "version": "1.0.0",
+  "description": "CSS only symulation of pong game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paulina Zimny",
+  "license": "ISC"
+}
